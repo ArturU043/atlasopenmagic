@@ -20,23 +20,23 @@ def _sample_finder(dataset: str | int):
     return files
 
 
-def fetch_data(
+def get_data(
     dataset: str | int,
     tree: str,
     branch_filter: str | list[str],
     selection: str | None = None,
     nfiles: int = 500,
-    arrays: bool = True,
+    return_paths: bool = False,
     **kwargs,
 ):
     """Fetch data using ServiceX based on the given selection and dataset.
 
     Args:
         selection (str): The selection criteria for the data.
-        dataset (str): The dataset identifier. Can be DSID key or eos path or RECORDID
+        dataset (str): The dataset identifier. Can be DSID key, /eos path, XRootD url, or CernOpenData record ID
 
     Returns:
-        dict: A dictionary containing the fetched data.
+        filtered_files: Loaded in awkward arrays or a list of paths if specified
     """
     # Resolve dataset type
     files = _sample_finder(dataset)
@@ -59,13 +59,13 @@ def fetch_data(
         ],
     }
 
-    filtered_files = deliver(spec, **kwargs)
+    filtered_files = deliver(spec, **kwargs)  # Query sent to ServiceX server
 
-    if arrays:
+    if return_paths is False:
         # Convert to Awkward arrays
-        return to_awk(filtered_files, **kwargs)
+        return to_awk(filtered_files, **kwargs)[str(dataset)]  # dictionary of arrays
     else:
-        return filtered_files
+        return filtered_files[str(dataset)]  # dictionary of paths
 
 
 def get_structure(dataset: str | int, **kwargs):
