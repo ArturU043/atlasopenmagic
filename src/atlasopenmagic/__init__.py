@@ -19,9 +19,11 @@ from .metadata import (
     get_urls,
     get_urls_data,
     match_metadata,
+    print_metadata,
     read_metadata,
     save_metadata,
     set_release,
+    set_verbosity,
 )
 from .utils import (
     build_data_dataset,
@@ -39,6 +41,7 @@ __all__ = [
     "available_skims",
     "get_metadata_fields",
     "set_release",
+    "set_verbosity",
     "find_all_files",
     "available_releases",
     "get_all_info",
@@ -47,6 +50,7 @@ __all__ = [
     "available_datasets",
     "available_keywords",
     "match_metadata",
+    "print_metadata",
     "save_metadata",
     "read_metadata",
     "get_all_metadata",
