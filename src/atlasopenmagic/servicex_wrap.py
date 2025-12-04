@@ -25,7 +25,7 @@ def get_data(
     tree: str,
     branch_filter: str | list[str],
     selection: str | None = None,
-    nfiles: int = 500,
+    nfiles: int = -1,
     return_paths: bool = False,
     **kwargs,
 ):
@@ -34,6 +34,11 @@ def get_data(
     Args:
         selection (str): The selection criteria for the data.
         dataset (str): The dataset identifier. Can be DSID key, /eos path, XRootD url, or CernOpenData record ID
+        tree (str): The name of the tree to query.
+        branch_filter (str | list[str]): The branches to retrieve.
+        nfiles (int): Number of files to process. Default is 500.
+        return_paths (bool): If True, returns file paths instead of loaded data. Default is False.
+        **kwargs: Additional keyword arguments for data delivery and conversion.
 
     Returns:
         filtered_files: Loaded in awkward arrays or a list of paths if specified
