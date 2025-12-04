@@ -1,0 +1,33 @@
+[workspace]
+authors = ["Artur Cordeiro Oudot Choi <acordeir@cern.ch>"]
+channels = ["conda-forge"]
+name = "atom"
+platforms = ["osx-64", "linux-64"]
+version = "0.1.0"
+
+[tasks]
+test = { cmd = "pytest", description = "Run tests" }
+
+
+[dependencies]
+awkward = ">=2.8.10,<3"
+servicex = ">=3.2.3,<4"
+servicex-analysis-utils = ">=1.2.1,<2"
+matplotlib = ">=3.10.8,<4"
+mplhep = ">=0.4.1,<0.5"
+uproot = ">=5.6.8,<6"
+fsspec-xrootd = ">=0.5.1,<0.6"
+
+[feature.lab.dependencies]
+notebook = ">=7.5.0,<8"
+jupyterlab = ">=4.5.0,<5"
+ipywidgets = ">=8.1.8,<9"
+
+[feature.lab.tasks]
+lab = { cmd = "jupyter lab", description = "Launch Jupter Lab" }
+
+[environments]
+interactive = ["lab"]
+
+[pypi-dependencies]
+atlasopenmagic = { path = "/Users/acordeir/Documents/IRIS-HEP/Service_X/outreach/atlasopenmagic/", editable = true }
