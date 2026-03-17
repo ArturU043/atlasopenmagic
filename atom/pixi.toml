@@ -17,6 +17,8 @@ matplotlib = ">=3.10.8,<4"
 mplhep = ">=0.4.1,<0.5"
 uproot = ">=5.6.8,<6"
 fsspec-xrootd = ">=0.5.1,<0.6"
+hist = "*"
+vector = "*"
 
 [feature.lab.dependencies]
 notebook = ">=7.5.0,<8"

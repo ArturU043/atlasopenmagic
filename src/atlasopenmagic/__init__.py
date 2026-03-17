@@ -32,7 +32,7 @@ from .utils import (
     install_from_environment,
 )
 
-from .servicex_wrap import get_data, get_structure
+from .servicex_wrap import get_data
 
 # List of public functions available when importing the package
 __all__ = [
@@ -59,5 +59,4 @@ __all__ = [
     "build_mc_dataset",
     "build_data_dataset",
     "get_data",
-    "get_structure",
 ]
